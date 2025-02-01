@@ -14,6 +14,6 @@ app.autodiscover_tasks()
 app.conf.beat_schedule = {
     "create unusual ratings for posts": {
         "task": "content_rating.tasks.check_ratings.check_for_unusual_ratings",
-        "schedule": crontab(minute='*', hour='*'),
+        "schedule": crontab(minute=0, hour='*'),
     },
 }
