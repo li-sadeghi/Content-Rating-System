@@ -15,10 +15,10 @@ class PostListViewTest(test.APITestCase):
         )
 
         # Create some posts
-        self.post1 = content_rating_models.Post.objects.create(
+        self.post1 = factory.create_dummy_post(
             title="First Post", content="Content of first post"
         )
-        self.post2 = content_rating_models.Post.objects.create(
+        self.post2 = factory.create_dummy_post(
             title="Second Post", content="Content of second post"
         )
 

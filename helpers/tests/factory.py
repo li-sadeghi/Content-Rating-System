@@ -11,6 +11,15 @@ def create_dummy_post(
     return content_rating_models.Post.objects.create(title=title, content=content)
 
 
+def create_dummy_rating(
+    user: auth_models.User, post: content_rating_models.Post, score: int
+) -> content_rating_models.Rating:
+    """Creates and returns a dummy rating for a post by a user."""
+    return content_rating_models.Rating.objects.create(
+        user=user, post=post, score=score
+    )
+
+
 def create_dummy_user(**kwargs) -> auth_models.User:
     """Create and return a dummy user with random values for its username and password."""
     kwargs.setdefault(
