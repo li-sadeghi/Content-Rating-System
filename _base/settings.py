@@ -47,6 +47,7 @@ PROJECT_APPS = [
 THIRD_PARTY_APPS = [
     "rest_framework",
     "rest_framework_simplejwt",
+    "django_celery_beat",
 ]
 INSTALLED_APPS = [
     *DEFAULT_APPS,
@@ -129,6 +130,10 @@ REST_FRAMEWORK = {
     },
 }
 
+# Celery and rabbitmq
+RABBIT_USER = manage_settings.config("RABBIT_USER", "guest")
+RABBIT_PASSWORD = manage_settings.config("RABBIT_PASSWORD", "guest")
+CELERY_BROKER_URL = manage_settings.config("CELERY_BROKER_URL", "amqp://localhost")
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/

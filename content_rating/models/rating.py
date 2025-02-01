@@ -51,12 +51,12 @@ class Rating(helper_models.TimeModel):
     def __str__(self) -> str:
         """Returns a string representation of the Rating object."""
         return f"{self.user.username} rated {self.post.title} with {self.score} score"
-    
+
     def save(self, *args, **kwargs):
         """Override save method to update post ratings."""
         super().save(*args, **kwargs)
         self.post.update_ratings()
-    
+
     def delete(self, *args, **kwargs):
         """Override delete method to update post ratings after deletion."""
         post = self.post
