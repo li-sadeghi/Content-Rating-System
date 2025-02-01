@@ -41,6 +41,8 @@ DEFAULT_APPS = [
 ]
 PROJECT_APPS = [
     "users",
+    "helpers",
+    "content_rating",
 ]
 THIRD_PARTY_APPS = [
     "rest_framework",
