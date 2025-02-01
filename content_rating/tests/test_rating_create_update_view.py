@@ -63,3 +63,19 @@ class RatingCreateUpdateViewTest(test.APITestCase):
 
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertIn("score", response.data)
+
+    def test_user_rate_throttling(self):
+        self.client.login(username="testusername", password="testpassword")
+        response = self.client.post(self.api_url, {"score": 5})
+
+        # Throttle must allow the first request
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.client.post(self.api_url, {"score": 5})
+        self.client.post(self.api_url, {"score": 5})
+        self.client.post(self.api_url, {"score": 5})
+        self.client.post(self.api_url, {"score": 5})
+        response = self.client.post(self.api_url, {"score": 5})
+
+        # Throttle must not allow the fifth request
+        self.assertEqual(response.status_code, status.HTTP_429_TOO_MANY_REQUESTS)

@@ -1,4 +1,4 @@
-from rest_framework import permissions, generics, status, response
+from rest_framework import permissions, generics, status, response, throttling
 from content_rating import serializers, models as content_rating_models
 
 
@@ -7,6 +7,8 @@ class RatingCreateUpdateView(generics.GenericAPIView):
 
     serializer_class = serializers.RatingSerializer
     permission_classes = [permissions.IsAuthenticated]
+    throttle_classes = [throttling.UserRateThrottle]
+    throttle_scope = "user"
 
     def get_object(self):
         """Retrieve the post object using the pk in the URL."""
