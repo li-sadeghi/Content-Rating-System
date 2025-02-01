@@ -13,4 +13,4 @@ class PostAdmin(admin.ModelAdmin):
         "total_ratings",
         "average_rating",
     )
-    readonly_fields = ('total_ratings', 'average_rating')
+    readonly_fields = ("total_ratings", "average_rating")
