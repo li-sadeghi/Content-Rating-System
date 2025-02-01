@@ -41,6 +41,8 @@ DEFAULT_APPS = [
 ]
 PROJECT_APPS = [
     "users",
+    "helpers",
+    "content_rating",
 ]
 THIRD_PARTY_APPS = [
     "rest_framework",
@@ -119,7 +121,12 @@ AUTH_PASSWORD_VALIDATORS = [
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
     ),
+    "DEFAULT_THROTTLE_RATES": {
+        "user": "5/minute",
+    },
 }
 
 
