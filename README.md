@@ -68,7 +68,6 @@ This project is entirely built using Django REST Framework (DRF), and the views 
 
 **Challenges:**
 In this project, the first major challenge was handling situations where there are a very large number of ratings for each post. This could cause issues in the API response for listing posts because we needed to calculate the average rating and the total number of ratings for each post. This could slow down the system and cause performance problems. To solve this issue, we added two fields to each post to store and update the average rating and the total number of ratings. This problem has several potential solutions:
-Here’s a simpler translation of the text into English:
 
 ---
 
